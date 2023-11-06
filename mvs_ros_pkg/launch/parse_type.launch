@@ -1,0 +1,6 @@
+<launch>
+  <node pkg="mvs_ros_pkg" type="parse_type_time" name="parse_type_time" output="screen">
+    <param name="bag_path" type="string" value="/home/dji/2021-04-25-17-26-05.bag"/>
+    <param name="write_path" type="string" value="$(find mvs_ros_pkg)/data/inc_time"/>
+  </node>
+</launch>

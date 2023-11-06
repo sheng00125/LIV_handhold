@@ -1,0 +1,29 @@
+{
+    "lidar_config": [
+        {
+            "broadcast_code": "3JEDK3U0014C561",
+            "enable_connect": false,
+            "return_mode": 0,
+            "coordinate": 0,
+            "imu_rate": 0,
+            "extrinsic_parameter_source": 0,
+            "enable_high_sensitivity": false
+        },
+        {
+            "broadcast_code": "0TFDG3U99101431",
+            "enable_connect": false,
+            "return_mode": 0,
+            "coordinate": 0,
+            "imu_rate": 0,
+            "extrinsic_parameter_source": 0,
+            "enable_high_sensitivity": false
+        }
+    ],
+    "timesync_config": {
+        "enable_timesync": true,
+        "device_name": "/dev/ttyUSB0",
+        "comm_device_type": 0,
+        "baudrate_index": 2,
+        "parity_index": 0
+    }
+}

@@ -1,0 +1,5 @@
+<launch>
+  <node pkg="mvs_ros_pkg" type="Trigger_Image" name="Trigger_Image" output="screen"/>
+    
+  <node pkg="rviz" type="rviz" name="rviz" args="-d $(find mvs_ros_pkg)/rviz_cfg/mvs_camera.rviz"/>
+</launch>

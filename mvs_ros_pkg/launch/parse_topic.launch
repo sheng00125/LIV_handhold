@@ -1,0 +1,8 @@
+<launch>
+  <node pkg="mvs_ros_pkg" type="parse_topic_time" name="parse_topic_time" output="screen">
+    <param name="bag_path" type="string" value="/home/dji/2021-04-25-17-26-05.bag"/>
+    <param name="write_path" type="string" value="$(find mvs_ros_pkg)/data/inc_time"/>
+    <param name="is_img_topic" type="bool" value="true"/>
+    <param name="topic_name" type="string" value="/left_camera/image"/>
+  </node>
+</launch>

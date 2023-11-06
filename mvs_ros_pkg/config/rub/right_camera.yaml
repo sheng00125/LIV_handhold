@@ -1,0 +1,23 @@
+%YAML:1.0
+
+#--------------------------------------------------------------------------------------------
+# Camera Parameters. Adjust them!
+#--------------------------------------------------------------------------------------------
+
+SerialNumber: "00G88325507"
+
+TopicName: "right_camera/image"
+# Exposure Auto, 0 stands for Off, 1 stands for Once, 2 stands for Continues
+ExposureAuto: 2
+AutoExposureTimeLower: 65
+AutoExposureTimeUpper: 10000
+# Gain Auto, 0 stands for Off, 1 stands for Once, 2 stands for Continues
+GainAuto: 2
+
+# Gamma Selector, 0 stands for user, 1 stands for sRGB
+GammaSelector: 1
+
+# Frame Rate
+FrameRate: 10.0
+
+

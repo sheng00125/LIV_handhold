@@ -1,0 +1,325 @@
+﻿The following portions of the LIVOX’s Livox SDK (“Software” referred to in the terms below) are made available to you under the terms of the MIT License provided below.  
+
+Livox-SDK
+├── CMakeLists.txt
+├── sample
+│   ├── hub
+│   │   ├── CMakeLists.txt
+│   │   └── main.c
+│   ├── hub_lvx_file
+│   │   ├── CMakeLists.txt
+│   │   ├── lvx_file.cpp
+│   │   ├── lvx_file.h
+│   │   └── main.cpp
+│   ├── lidar
+│   │   ├── CMakeLists.txt
+│   │   └── main.c
+│   └── lidar_lvx_file
+│       ├── CMakeLists.txt
+│       ├── lvx_file.cpp
+│       ├── lvx_file.h
+│       └── main.cpp
+├── sample_cc
+│   ├── hub
+│   │   ├── CMakeLists.txt
+│   │   ├── lds_hub.cpp
+│   │   ├── lds_hub.h
+│   │   └── main.cpp
+│   ├── lidar
+│   │   ├── CMakeLists.txt
+│   │   ├── lds_lidar.cpp
+│   │   ├── lds_lidar.h
+│   │   └── main.cpp
+│   ├── lidar_utc_sync
+│   │   ├── CMakeLists.txt
+│   │   ├── lds_lidar.cpp
+│   │   ├── lds_lidar.h
+│   │   ├── main.cpp
+│   │   ├── synchro.cpp
+│   │   └── synchro.h
+│   └── trouble_shooting
+│       ├── CMakeLists.txt
+│       └── main.cpp
+└── sdk_core
+    ├── CMakeLists.txt
+    ├── include
+    │   ├── comm
+    │   │   ├── comm_port.h
+    │   │   └── protocol.h
+    │   ├── config.h
+    │   ├── livox_def.h
+    │   └─ livox_sdk.h
+    └── src
+        ├── base
+        │   ├── command_callback.h
+        │   ├── io_loop.cpp
+        │   ├── io_loop.h
+        │   ├── io_thread.cpp
+        │   ├── io_thread.h
+        │   ├── logging.cpp
+        │   ├── logging.h
+        │   ├── multiple_io
+        │   │   ├── multiple_io_base.cpp
+        │   │   ├── multiple_io_base.h
+        │   │   ├── multiple_io_epoll.cpp
+        │   │   ├── multiple_io_epoll.h
+        │   │   ├── multiple_io_factory.h
+        │   │   ├── multiple_io_kqueue.cpp
+        │   │   ├── multiple_io_kqueue.h
+        │   │   ├── multiple_io_poll.cpp
+        │   │   ├── multiple_io_poll.h
+        │   │   ├── multiple_io_select.cpp
+        │   │   └── multiple_io_select.h
+        │   ├── network
+        │   │   ├── network_util.h
+        │   │   ├── unix
+        │   │   │   └── network_util.cpp
+        │   │   └── win
+        │   │       └── network_util.cpp
+        │   ├── noncopyable.h
+        │   ├── thread_base.cpp
+        │   ├── thread_base.h
+        │   └── wake_up
+        │       ├── unix
+        │       │   └── wake_up_pipe.cpp
+        │       ├── wake_up_pipe.h
+        │       └── win
+        │           └── wake_up_pipe.cpp
+        ├── comm
+        │   ├── comm_port.cpp
+        │   ├── sdk_protocol.cpp
+        │   └── sdk_protocol.h
+        ├── command_handler
+        │   ├── command_channel.cpp
+        │   ├── command_channel.h
+        │   ├── command_handler.cpp
+        │   ├── command_handler.h
+        │   ├── command_impl.cpp
+        │   ├── command_impl.h
+        │   ├── hub_command_handler.cpp
+        │   ├── hub_command_handler.h
+        │   ├── lidar_command_handler.cpp
+        │   └── lidar_command_handler.h
+        ├── data_handler
+        │   ├── data_handler.cpp
+        │   ├── data_handler.h
+        │   ├── hub_data_handler.cpp
+        │   ├── hub_data_handler.h
+        │   ├── lidar_data_handler.cpp
+        │   └── lidar_data_handler.h
+        ├── device_discovery.cpp
+        ├── device_discovery.h
+        ├── device_manager.cpp
+        ├── device_manager.h
+        └── livox_sdk.cpp
+
+-------------------------------------------------------------
+The MIT License (MIT)
+
+Copyright (c) 2019 Livox. All rights reserved.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+===============================================================
+FastCRC
+└── sdk_core
+    ├── include
+    │   └── third_party
+    │       └── FastCRC
+    │           └── FastCRC.h
+    └── src
+        └── third_party
+            └── FastCRC
+                ├── FastCRCsw.cpp
+                ├── FastCRC_tables.hpp
+                ├── LICENSE.md
+                └── README.md
+
+LIVOX’s Livox SDK uses modified libraries of FastCRC (https://github.com/FrankBoesing/FastCRC), which is licensed under MIT license. A copy of the MIT license is provided below and is also available at https://raw.githubusercontent.com/FrankBoesing/FastCRC/master/LICENCE.md.
+
+The MIT License (MIT)
+
+Copyright (c) 2016 Frank
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+===============================================================
+LIVOX’s Livox SDK uses unmodified libraries of Ros (https://github.com/ros/ros), which is licensed under BSD license. A copy of the BSD license is provided below and is also available at https://opensource.org/licenses/BSD-3-Clause.
+
+-------------------------------------------------------------
+Copyright (c) 2001 - 2009, The Board of Trustees of the University of Illinois.
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are
+met:
+
+* Redistributions of source code must retain the above 
+  copyright notice, this list of conditions and the 
+  following disclaimer.
+
+* Redistributions in binary form must reproduce the
+  above copyright notice, this list of conditions
+  and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+
+* Neither the name of the University of Illinois
+  nor the names of its contributors may be used to
+  endorse or promote products derived from this
+  software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
+IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+===============================================================
+LIVOX’s Livox SDK uses unmodified libraries of spdlog(https://github.com/gabime/spdlog), which is licensed under MIT license. A copy of the MIT license is provided below and is also available at https://github.com/gabime/spdlog/blob/v1.x/LICENSE.
+
+The MIT License (MIT)
+
+Copyright (c) 2016 Gabi Melman.                                       
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+===============================================================
+LIVOX’s Livox SDK uses unmodified libraries of rapidxml(http://rapidxml.sourceforge.net/), which is licensed under the Boost Software License and MIT license. A copy of the Boost Software License and MIT license is provided below and is also available at http://rapidxml.sourceforge.net/license.txt.
+
+Use of this software is granted under one of the following two licenses,
+to be chosen freely by the user.
+
+1. Boost Software License - Version 1.0 - August 17th, 2003
+===============================================================================
+
+Copyright (c) 2006, 2007 Marcin Kalicinski
+
+Permission is hereby granted, free of charge, to any person or organization
+obtaining a copy of the software and accompanying documentation covered by
+this license (the "Software") to use, reproduce, display, distribute,
+execute, and transmit the Software, and to prepare derivative works of the
+Software, and to permit third-parties to whom the Software is furnished to
+do so, all subject to the following:
+
+The copyright notices in the Software and this entire statement, including
+the above license grant, this restriction and the following disclaimer,
+must be included in all copies of the Software, in whole or in part, and
+all derivative works of the Software, unless such copies or derivative
+works are solely in the form of machine-executable object code generated by
+a source language processor.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE, TITLE AND NON-INFRINGEMENT. IN NO EVENT
+SHALL THE COPYRIGHT HOLDERS OR ANYONE DISTRIBUTING THE SOFTWARE BE LIABLE
+FOR ANY DAMAGES OR OTHER LIABILITY, WHETHER IN CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+DEALINGS IN THE SOFTWARE.
+
+2. The MIT License
+===============================================================================
+
+Copyright (c) 2006, 2007 Marcin Kalicinski
+
+Permission is hereby granted, free of charge, to any person obtaining a copy 
+of this software and associated documentation files (the "Software"), to deal 
+in the Software without restriction, including without limitation the rights 
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies 
+of the Software, and to permit persons to whom the Software is furnished to do so, 
+subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all 
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR 
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL 
+THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, 
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS 
+IN THE SOFTWARE.
+
+===============================================================
+LIVOX’s Livox SDK uses modified libraries of cmdline (https://github.com/tanakh/cmdline). A copy of license is provided below and is also available at https://github.com/tanakh/cmdline/blob/master/LICENSE.
+
+-------------------------------------------------------------
+Copyright (c) 2009, Hideyuki Tanaka
+
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+    * Redistributions of source code must retain the above copyright
+      notice, this list of conditions and the following disclaimer.
+
+    * Redistributions in binary form must reproduce the above
+      copyright notice, this list of conditions and the following
+      disclaimer in the documentation and/or other materials provided
+      with the distribution.
+
+    * Neither the name of Hideyuki Tanaka nor the names of other
+      contributors may be used to endorse or promote products derived
+      from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+"AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.

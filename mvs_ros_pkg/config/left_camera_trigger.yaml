@@ -1,0 +1,37 @@
+%YAML:1.0
+
+#--------------------------------------------------------------------------------------------
+# Camera Parameters. Adjust them!
+#--------------------------------------------------------------------------------------------
+
+SerialNumber: "00G66398256" # "00G66398256" # "00G79916803"
+CameraName: "left"
+TopicName: "left_camera/image"
+# Exposure Auto, 0 stands for Off, 1 stands for Once, 2 stands for Continues
+# ExposureAuto: 0                                                                                                                                                                                                                                                                                                                                                                                                                                  
+# ExposureAutoMode: 0
+# ExposureTime: 100000 
+# ExposureTime: 20000
+# 
+# ExposureAuto: 2  
+ExposureAuto: 0
+ExposureTime: 2000
+
+# ExposureAutoMode: 2
+# ExposureAuto: 2
+# AutoExposureTimeLower: 100
+# AutoExposureTimeUpper: 20000 #10000
+
+resize_divide: 0.5
+CenterAlign: 1
+# Gain Auto, 0 stands for Off, 1 stands for Once, 2 stands for Continues
+GainAuto: 2
+# Gain: 15  # min: 0   max: 17.0166
+Gain: 15 # min: 0   max: 17.0166
+# Gamma: 0.7  # min: 0   max: 17.0166
+# ExposureTime: 100000 # min: 15  max: 9999500
+# GammaEnable: 1
+GammaSelector: 1 # 0 stands for user, 1 stands for sRGB, 2 
+Gamma: 0.7
+path_for_time_stamp: "/home/aa/timeshare"
+

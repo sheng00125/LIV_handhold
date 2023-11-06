@@ -1,0 +1,166 @@
+
+T33C4 003:686 SEGGER J-Link V5.12e Log File (0010ms, 0028ms total)
+T33C4 003:686 DLL Compiled: Apr 29 2016 15:03:58 (0010ms, 0028ms total)
+T33C4 003:686 Logging started @ 2022-08-13 17:57 (0010ms, 0028ms total)
+T33C4 003:696 JLINK_SetWarnOutHandler(...) (0000ms, 0028ms total)
+T33C4 003:696 JLINK_OpenEx(...)
+  ***** Error: Can not connect to J-Link via USB.  returns "Can not connect to J-Link via USB." (0000ms, 0028ms total)
+
+  ***** API Error: API JLINK_GetHardwareVersion function called before JLINKARM_Open()
+T33C4 003:696 
+  ***** Error: Can not connect to J-Link via USB.
+  ***** API Error: API JLINK_SetSpeed function called before JLINKARM_Open()
+T33C4 010:562 
+  ***** Error: Can not connect to J-Link via USB.
+  ***** API Error: API JLINK_WriteMem function called before JLINKARM_Open()
+T33C4 010:562 
+  ***** Error: Can not connect to J-Link via USB.
+  ***** API Error: API JLINK_ReadMem function called before JLINKARM_Open()
+T33C4 010:563 
+  ***** Error: Can not connect to J-Link via USB.
+  ***** API Error: API JLINK_SetSpeed function called before JLINKARM_Open()
+T33C4 010:563 
+  ***** Error: Can not connect to J-Link via USB.
+  ***** API Error: API JLINK_WriteMem function called before JLINKARM_Open()
+T33C4 010:564 
+  ***** Error: Can not connect to J-Link via USB.
+  ***** API Error: API JLINK_ReadMem function called before JLINKARM_Open()
+T33C4 010:564 
+  ***** Error: Can not connect to J-Link via USB.
+  ***** API Error: API JLINK_SetSpeed function called before JLINKARM_Open()
+T33C4 010:564 
+  ***** Error: Can not connect to J-Link via USB.
+  ***** API Error: API JLINK_WriteMem function called before JLINKARM_Open()
+T33C4 010:564 
+  ***** Error: Can not connect to J-Link via USB.
+  ***** API Error: API JLINK_ReadMem function called before JLINKARM_Open()
+T33C4 010:565 
+  ***** Error: Can not connect to J-Link via USB.
+  ***** API Error: API JLINK_SetSpeed function called before JLINKARM_Open()
+T33C4 010:565 
+  ***** Error: Can not connect to J-Link via USB.
+  ***** API Error: API JLINK_WriteMem function called before JLINKARM_Open()
+T33C4 010:565 
+  ***** Error: Can not connect to J-Link via USB.
+  ***** API Error: API JLINK_ReadMem function called before JLINKARM_Open()
+T33C4 010:566 
+  ***** Error: Can not connect to J-Link via USB.
+  ***** API Error: API JLINK_SetSpeed function called before JLINKARM_Open()
+T33C4 010:566 
+  ***** Error: Can not connect to J-Link via USB.
+  ***** API Error: API JLINK_WriteMem function called before JLINKARM_Open()
+T33C4 010:566 
+  ***** Error: Can not connect to J-Link via USB.
+  ***** API Error: API JLINK_ReadMem function called before JLINKARM_Open()
+T33C4 010:567 
+  ***** Error: Can not connect to J-Link via USB.
+  ***** API Error: API JLINK_SetSpeed function called before JLINKARM_Open()
+T33C4 010:567 
+  ***** Error: Can not connect to J-Link via USB.
+  ***** API Error: API JLINK_WriteMem function called before JLINKARM_Open()
+T33C4 010:567 
+  ***** Error: Can not connect to J-Link via USB.
+  ***** API Error: API JLINK_ReadMem function called before JLINKARM_Open()
+T33C4 010:567 
+  ***** Error: Can not connect to J-Link via USB.
+  ***** API Error: API JLINK_SetSpeed function called before JLINKARM_Open()
+T33C4 010:568 
+  ***** Error: Can not connect to J-Link via USB.
+  ***** API Error: API JLINK_WriteMem function called before JLINKARM_Open()
+T33C4 010:568 
+  ***** Error: Can not connect to J-Link via USB.
+  ***** API Error: API JLINK_ReadMem function called before JLINKARM_Open()
+T33C4 010:568 
+  ***** Error: Can not connect to J-Link via USB.
+  ***** API Error: API JLINK_SetSpeed function called before JLINKARM_Open()
+T33C4 010:569 
+  ***** Error: Can not connect to J-Link via USB.
+  ***** API Error: API JLINK_WriteMem function called before JLINKARM_Open()
+T33C4 010:569 
+  ***** Error: Can not connect to J-Link via USB.
+  ***** API Error: API JLINK_ReadMem function called before JLINKARM_Open()
+T33C4 010:569 
+  ***** Error: Can not connect to J-Link via USB.
+  ***** API Error: API JLINK_SetSpeed function called before JLINKARM_Open()
+T33C4 010:569 
+  ***** Error: Can not connect to J-Link via USB.
+  ***** API Error: API JLINK_WriteMem function called before JLINKARM_Open()
+T33C4 010:570 
+  ***** Error: Can not connect to J-Link via USB.
+  ***** API Error: API JLINK_ReadMem function called before JLINKARM_Open()
+T33C4 010:570 
+  ***** Error: Can not connect to J-Link via USB.
+  ***** API Error: API JLINK_SetSpeed function called before JLINKARM_Open()
+T33C4 010:570 
+  ***** Error: Can not connect to J-Link via USB.
+  ***** API Error: API JLINK_WriteMem function called before JLINKARM_Open()
+T33C4 010:571 
+  ***** Error: Can not connect to J-Link via USB.
+  ***** API Error: API JLINK_ReadMem function called before JLINKARM_Open()
+T33C4 010:571 
+  ***** Error: Can not connect to J-Link via USB.
+  ***** API Error: API JLINK_SetSpeed function called before JLINKARM_Open()
+T33C4 010:571 
+  ***** Error: Can not connect to J-Link via USB.
+  ***** API Error: API JLINK_WriteMem function called before JLINKARM_Open()
+T33C4 010:572 
+  ***** Error: Can not connect to J-Link via USB.
+  ***** API Error: API JLINK_ReadMem function called before JLINKARM_Open()
+T33C4 010:572 
+  ***** Error: Can not connect to J-Link via USB.
+  ***** API Error: API JLINK_SetSpeed function called before JLINKARM_Open()
+T33C4 010:572 
+  ***** Error: Can not connect to J-Link via USB.
+  ***** API Error: API JLINK_WriteMem function called before JLINKARM_Open()
+T33C4 010:572 
+  ***** Error: Can not connect to J-Link via USB.
+  ***** API Error: API JLINK_ReadMem function called before JLINKARM_Open()
+T33C4 010:573 
+  ***** Error: Can not connect to J-Link via USB.
+  ***** API Error: API JLINK_SetSpeed function called before JLINKARM_Open()
+T33C4 010:573 
+  ***** Error: Can not connect to J-Link via USB.
+  ***** API Error: API JLINK_WriteMem function called before JLINKARM_Open()
+T33C4 010:573 
+  ***** Error: Can not connect to J-Link via USB.
+  ***** API Error: API JLINK_ReadMem function called before JLINKARM_Open()
+T33C4 010:574 
+  ***** Error: Can not connect to J-Link via USB.
+  ***** API Error: API JLINK_SetSpeed function called before JLINKARM_Open()
+T33C4 010:574 
+  ***** Error: Can not connect to J-Link via USB.
+  ***** API Error: API JLINK_WriteMem function called before JLINKARM_Open()
+T33C4 010:574 
+  ***** Error: Can not connect to J-Link via USB.
+  ***** API Error: API JLINK_ReadMem function called before JLINKARM_Open()
+T33C4 010:574 
+  ***** Error: Can not connect to J-Link via USB.
+  ***** API Error: API JLINK_SetSpeed function called before JLINKARM_Open()
+T33C4 010:575 
+  ***** Error: Can not connect to J-Link via USB.
+  ***** API Error: API JLINK_WriteMem function called before JLINKARM_Open()
+T33C4 010:575 
+  ***** Error: Can not connect to J-Link via USB.
+  ***** API Error: API JLINK_ReadMem function called before JLINKARM_Open()
+T33C4 010:575 
+  ***** Error: Can not connect to J-Link via USB.
+  ***** API Error: API JLINK_SetSpeed function called before JLINKARM_Open()
+T33C4 010:576 
+  ***** Error: Can not connect to J-Link via USB.
+  ***** API Error: API JLINK_WriteMem function called before JLINKARM_Open()
+T33C4 010:576 
+  ***** Error: Can not connect to J-Link via USB.
+  ***** API Error: API JLINK_ReadMem function called before JLINKARM_Open()
+T33C4 010:576 
+  ***** Error: Can not connect to J-Link via USB.JLINK_IsOpen()  returns 0x00 (0000ms, 0043ms total)
+T33C4 010:577 JLINK_EMU_SelectByUSBSN(SerialNo = 0)  returns 0xFFFFFFFF (0000ms, 0043ms total)
+T33C4 010:577 JLINK_EnableLog(...) (0000ms, 0043ms total)
+T33C4 010:577 JLINK_SetWarnOutHandler(...) (0000ms, 0043ms total)
+T33C4 010:577 JLINK_OpenEx(...)
+  ***** Error: Can not connect to J-Link via USB.  returns "Can not connect to J-Link via USB." (0001ms, 0044ms total)
+
+  ***** API Error: API JLINK_GetHardwareVersion function called before JLINKARM_Open()
+T33C4 010:578 
+  ***** Error: Can not connect to J-Link via USB.JLINK_Close() (0000ms, 0044ms total)
+T33C4 023:825  (0000ms, 0044ms total)
+T33C4 023:825 Closed (0000ms, 0044ms total)

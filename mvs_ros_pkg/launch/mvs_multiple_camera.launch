@@ -1,0 +1,29 @@
+<launch>
+    <node 
+    pkg="mvs_ros_pkg"
+    type="grabImg"
+    name="right_camera"
+    args="$(find mvs_ros_pkg)/config/right_camera.yaml"
+    respawn="true"
+    output="screen"
+  />
+
+  <node 
+    pkg="mvs_ros_pkg"
+    type="grabImg"
+    name="left_camera"
+    args="$(find mvs_ros_pkg)/config/left_camera.yaml"
+    respawn="true"
+    output="screen"
+  />
+
+  <!--
+  <node 
+    pkg="rviz"
+    type="rviz"
+    name="rviz"
+    args="-d $(find mvs_ros_pkg)/rviz_cfg/mvs_camera.rviz"
+  />
+  -->
+
+</launch>
