@@ -7,20 +7,23 @@ We release the all of our schematic files with STL files format (under the “re
 **Contributors**: [Sheng Hong](https://github.com/sheng00125) and [Chunran Zheng](https://github.com/xuankuzcr)
 
 <div align="center">
-<img src="./pics/introduction_alpha.png"  width="100.0%" />
+<img src="./pics/cover.jpg"  width="100.0%" />
 </div>
+
 
 ## 2. Guide to installation
 ### 2.1 Assembly instruction
 The assembly instructions are shown in the following figure, where we mark each module correspondingly with the name of each STL files.
 
-<div align="center">
-<img src="./pics/stl.jpg"  width="100.0%" />
-</div>
+<p align="center">
+  <img src="./pics/1.gif" alt="Image Description" width="48%">
+  <img src="./pics/2.gif" alt="GIF Description" width="48%">
+</p>
+
 
 ### 2.2 Electronic connection
 The guide of electronic connection is shown as follow:
-| avia lidar M12  | Peripheral Function     |
+| Livox Avia LiDAR M12 | Peripheral Function     |
 |--------|------|
 |PIN 1   |Power: +  |
 |PIN 2   |Power: -  |
