@@ -48,8 +48,8 @@ The guide for the electronic connections is presented as follows:
   <tr>
     <td>PIN 1</td>
     <td>Power: +</td>
-    <td rowspan="8" style="text-align: center;">
-      <img src="./pics/12PIN.jpg" alt="Diagram" style="width: auto; height: auto; max-width: 25%;"><br>
+    <td rowspan="8" align="center">
+      <img src="./pics/12PIN.jpg" alt="Diagram" width="38%"><br>
       <span style="display: block; text-align: center;">AVIA 12-Pin Interface, top: female bottom: male</span>
     </td>
   </tr>
