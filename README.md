@@ -15,6 +15,16 @@ The assembly instructions are shown in the following figure, where we mark each 
 
 ### 2.2 Electronic connection
 The guide of electronic connection is shown as follow:
+| avia lidar M12  | Peripheral Function     |
+|--------|------|
+|PIN 1   |Power: +  |
+|PIN 2   |Power: -  |
+|PIN 7   |Ethernet: right PIN3 |
+|PIN 6   |Ethernet: left PIN3 |
+|PIN 5   |Ethernet: green PIN2 |
+|PIN 4   |Ethernet: green / write|
+|PIN 11  |MCU PWM - GND |
+|PIN 12  |MCU PWM + PB5 |
 
 ### 2.3 Root directory
 
@@ -38,6 +48,7 @@ If you have installed [*Solidworks*](https://www.solidworks.com) on your compute
 ## 4. Material lists (only for reference)
 | Item  | Pics  | Purchasing list <br> (available is <br>  not guaranteed)  |
 | :------------: | :------------: | :------------: |
+| Livox Avia LiDAR  | <img src="./pics/livox_avia.png" width=40%  />  | [Livox tech](https://www.livoxtech.com/); [DJI store](https://store.dji.com/hk-en/product/livox-avia) |
 
 ## 5. License
 The source code is released under [GPLv2](http://www.gnu.org/licenses/) license. 
