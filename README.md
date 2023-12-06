@@ -1,4 +1,4 @@
-# LiDAR_Inertial_Visual_Handhold
+# [LiDAR_Inertial_Visual_Handhold](https://zhuanlan.zhihu.com/p/670136001)
 ## 1. Introduction
 This repository provides the **CAD files** (with suffix “\*.SLDPRT and \*.SLDASM”) for our handheld device, which can be opened and edited with [*Solidworks*](https://www.solidworks.com). All of the modules are suitable for printing with [*FDM (Fused Deposition Modeling)*](https://en.wikipedia.org/wiki/Fused_filament_fabrication). In addition, we have also open-sourced our **hardware synchronization scheme**, as well as the **STM32 source code** and **hardware wiring configuration** instructions.
 
