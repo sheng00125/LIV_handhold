@@ -460,10 +460,9 @@ ARM Macro Assembler    Page 8
 
 
 ork --depend=..\..\32hex\startup_stm32f10x_hd.d -o..\..\32hex\startup_stm32f10x
-_hd.o -IC:\Users\Sheng\Desktop\Sync\stm32_timersync-open\USER\RTE -IC:\Keil_v5\
-ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include -IC:\Keil_v5\ARM\CMSIS\Include
- --predefine="__UVISION_VERSION SETA 520" --predefine="STM32F10X_LD SETA 1" --l
-ist=.\startup_stm32f10x_hd.lst ..\CORE\startup_stm32f10x_hd.s
+_hd.o -IC:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.4.1\Device\Include --predefine
+="__EVAL SETA 1" --predefine="__UVISION_VERSION SETA 539" --predefine="STM32F10
+X_MD SETA 1" --list=.\startup_stm32f10x_hd.lst ..\CORE\startup_stm32f10x_hd.s
 
 
 
@@ -1138,4 +1137,4 @@ Symbol: __use_two_region_memory
       None
 Comment: __use_two_region_memory unused
 3 symbols
-403 symbols in table
+404 symbols in table

@@ -1,4 +1,9 @@
 # [LiDAR_Inertial_Visual_Handhold](https://zhuanlan.zhihu.com/p/670136001)
+
+### News
+* **`27 May 2024`:** Fix a bug in the calculation of the synthetic GPRMC timestamp, which could cause timestamp rollback. Additionally, we add checksum verification for GPRMC.
+* **`20 May 2024`:** According to Livox Avia's pin requirements, we convert PPS TTL level to RS485 level and supplement it with more detailed electronic connection and material list.
+
 ## 1. Introduction
 This repository provides the **CAD files** (with suffix “\*.SLDPRT and \*.SLDASM”) for our handheld device, which can be opened and edited with [*Solidworks*](https://www.solidworks.com). All of the modules are suitable for printing with [*FDM (Fused Deposition Modeling)*](https://en.wikipedia.org/wiki/Fused_filament_fabrication). In addition, we have also open-sourced our **hardware synchronization scheme**, as well as the **STM32 source code** and **hardware wiring configuration** instructions.
 
@@ -8,11 +13,10 @@ This repository provides the **CAD files** (with suffix “\*.SLDPRT and \*.SLDA
 <img src="./pics/cover.jpg"  width="100.0%" />
 </div>
 
-
 ## 2. Guide to installation
 ### 2.1 Root directory
 
-    ├── My_handhold/ - CAD source files
+    ├── handhold_cad/ - CAD source files
     │   ├── ...
     ├── livox_ros_driver/ - Livox LiDAR ROS driver
     │   ├── ...
@@ -34,7 +38,6 @@ The assembly instructions are demonstrated in the GIFs below. Each module is cle
   <img src="./pics/1.gif" alt="1" width="48%">
   <img src="./pics/2.gif" alt="2" width="48%">
 </p>
-
 
 ### 2.3 Electronic connection
 The guide for the electronic connections is presented as follows:
@@ -75,13 +78,24 @@ The guide for the electronic connections is presented as follows:
   </tr>
   <tr>
     <td>PIN 11</td>
+    <td>RS485_B</td>
+  </tr>
+  <tr>
+    <td>PIN 12</td>
+    <td>RS485_A</td>
+  </tr>
+  <!-- <tr>
+    <td>PIN 11</td>
     <td>STM32 PWM- GND</td>
   </tr>
   <tr>
     <td>PIN 12</td>
     <td>STM32 PWM+ PB5</td>
-  </tr>
+  </tr> -->
 </table>
+
+**Note: STM32 PB5 (PPS signal) is converted from TTL to RS-485, resulting in RS-485_A and RS-485_B. STM32 TXD (GPRMC) is converted from TTL to USB and sent to the PC. If you are using the Mid360, you can directly connect STM32 PB5 to PIN 12 of the LiDAR M12.** 
+
 <table>
   <tr>
     <th>MVS Camera 6PIN</th>
@@ -144,10 +158,12 @@ The guide for the electronic connections is presented as follows:
 | :------------: | :------------: | :------------: |
 | Livox Avia LiDAR  | <img src="./pics/livox_avia.png" width=20%  /> | [Livox Avia](https://store.dji.com/hk-en/product/livox-avia) |
 | CMOS | <img src="./pics/cmos.jpg" width=20%  /> | [MV-CA013-21UC ](https://www.hikrobotics.com/en/machinevision/productdetail?id=1314&pageNumber=1&pageSize=50) |
-| Camera Len | <img src="./pics/len.jpg" width=20%  /> | [Len 6mm](https://m.tb.cn/h.5l9xs3N?tk=R8R0W4cxQUF) |
+| Camera Len | <img src="./pics/len.jpg" width=20%  /> | [ MVL-HF0628M-6MPE](https://m.tb.cn/h.gXmtLRX2UYzGDzH?tk=hIS7WGPOY0y) |
 | STM32 | <img src="./pics/stm32.jpg" width=25%  /> | [STM32F103C8T6](https://m.tb.cn/h.5l9yRB3?tk=jn3VW4cCEKf) |
 | Screen | <img src="./pics/screen.jpg" width=25%  /> | [IPS Screen 14''](https://m.tb.cn/h.5Pxn06R?tk=2Ut5W4cBCXg) |
 | Battery | <img src="./pics/battery.jpg" width=30%  /> | [4800mah](https://m.tb.cn/h.5PgoojG?tk=j3cVW4XaZVp) |
+| TTL to USB | <img src="./pics/usb.jpg" width=30%  /> | [TTL to USB](https://m.tb.cn/h.gWzMxzBSkhSqkH3?tk=N1j3WEzIP9u) |
+| TTL to 485 | <img src="./pics/485.jpg" width=30%  /> | [TTL to 485](https://m.tb.cn/h.g3SEkso?tk=eER4WEzFYmP) |
 
 ## 4. License
 The source code is released under [GPLv2](http://www.gnu.org/licenses/) license. 

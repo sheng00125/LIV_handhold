@@ -2,7 +2,8 @@
 #include "led.h"
 #include "usart.h"
 #include "sys.h"
-
+#include <stdio.h>
+#include <string.h>
 
 //1,增加TIM3_PWM_Init函数。
 //2,增加LED0_PWM_VAL宏定义，控制TIM3_CH2脉宽									  
@@ -37,12 +38,58 @@ void TIM3_Int_Init(u16 arr,u16 psc)
 	TIM_Cmd(TIM3, ENABLE);  //使能TIMx外设
 							 
 }
+
+
+
+
 vu16 varl=0;
 //定时器3中断服务程序
 vu16 var_Exp=0;
 vu16 global_time;
 char snum[7];
 vu16 shorttt=0;
+
+char gprmcStr[7]="$GPRMC,";
+int chckNum=0;
+char chckNumChar[2];
+
+int ss=0;
+int mm=0;
+int hh=0;
+
+unsigned char result;
+int i;
+int checkNum(const char *gprmcContext)
+{
+    if (gprmcContext == NULL) 
+    {
+        // printf("Input is NULL.\n");
+        return -1;
+		}
+
+    result = gprmcContext[1];
+
+    for (i = 2; gprmcContext[i] != '*' && gprmcContext[i] != '\0'; i++)
+    {
+        // printf("Processing character: %c (ASCII: %d)\n", gprmcContext[i], gprmcContext[i]);
+        result ^= gprmcContext[i];
+    }
+
+    if (gprmcContext[i] != '*') 
+    {
+        // printf("No '*' found in the string.\n");
+        return -1;
+    }
+
+    //printf("Final result before returning: %02X\n", result);
+    return result;
+}
+
+char value_1[100]="";
+char value_2[100]="";
+char value_time[10]="";
+
+char test[100]="$GPRMC,004015,A,2812.0498,N,11313.1361,E,0.0,180.0,150122,3.9,W,A*";
 void TIM3_IRQHandler(void)   //TIM3中断
 {
 
@@ -57,15 +104,52 @@ void TIM3_IRQHandler(void)   //TIM3中断
 
 		PCout(13)=0;
 		}
-		global_time++;
+		
+		
+		//global_time++;
+		//shorttt=0;
+		//sprintf(snum, "%06d", global_time); //产生："000011D7"
+		//snum[6]=0;
+		//printf("$GPRMC,");
+	  //printf(snum);
+		//printf(".00,A,2237.496474,N,11356.089515,E,0.0,225.5,310518,2.3,W,A*23\n");
+		
 
-		shorttt=0;
-		sprintf(snum, "%06d", global_time); //产生："000011D7"
-		snum[6]=0;
-		printf("$GPRMC,");
-		printf(snum);
-		printf(".00,A,2237.496474,N,11356.089515,E,0.0,225.5,310518,2.3,W,A*23\n");
+		
+		//************************************* add *********************************************
+		//UTCtime format: hhmmss
+		
+    if(ss<59){
+				ss++;
+		}else{
+			  ss=0;
+			 if(mm<59){
+				 mm++;
+			 }else{
+				 mm=0;
+				 if(hh<23){
+					 hh++;
+				 }else{
+					 hh=0;
+				 }
+			 }
+		}
+		
+    sprintf(value_2, "%s%02d%02d%02d%s", gprmcStr, hh, mm, ss, ".00,A,2237.496474,N,11356.089515,E,0.0,225.5,230520,2.3,W,A*");
+		strcpy(value_1,value_2);
+	  chckNum =checkNum(value_1);
+	  sprintf(chckNumChar, "%02X", chckNum);
+		printf("%s", value_2);
+    printf("%s\n", chckNumChar);
+	 
+		
+	  //**********************************************************************************
 
+		/**
+		chckNum=checkNum(test);	
+	  sprintf(chckNumChar, "%02X", chckNum);
+    printf("%s\n", chckNumChar);
+    */
 }
 
 
