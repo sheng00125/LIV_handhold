@@ -159,14 +159,14 @@ The guide for the electronic connections is presented as follows:
 | Livox Avia LiDAR  | <img src="./pics/livox_avia.png" width=20%  /> | [Livox Avia](https://store.dji.com/hk-en/product/livox-avia) |
 | CMOS | <img src="./pics/cmos.jpg" width=20%  /> | [MV-CA013-21UC ](https://www.hikrobotics.com/en/machinevision/productdetail?id=1314&pageNumber=1&pageSize=50) |
 | Camera Len | <img src="./pics/len.jpg" width=20%  /> | [ MVL-HF0628M-6MPE](https://m.tb.cn/h.gXmtLRX2UYzGDzH?tk=hIS7WGPOY0y) |
-| STM32 | <img src="./pics/stm32.jpg" width=25%  /> | [STM32F103C8T6](https://m.tb.cn/h.5l9yRB3?tk=jn3VW4cCEKf) |
-| Screen | <img src="./pics/screen.jpg" width=25%  /> | [IPS Screen 14''](https://m.tb.cn/h.5Pxn06R?tk=2Ut5W4cBCXg) |
-| Battery | <img src="./pics/battery.jpg" width=30%  /> | [4800mah](https://m.tb.cn/h.5PgoojG?tk=j3cVW4XaZVp) |
+| STM32 | <img src="./pics/stm32.jpg" width=25%  /> | [STM32F103C8T6](https://m.tb.cn/h.ggkS9Kp?tk=orRfWz6M784) |
+| Screen | <img src="./pics/screen.jpg" width=25%  /> | [IPS Screen 10''](https://m.tb.cn/h.ggkhQ7e?tk=LntBWz6mHDL) |
+| Battery | <img src="./pics/battery.jpg" width=30%  /> | [4800mah](https://m.tb.cn/h.g5vJI7a?tk=ofKdWz6OYQm) |
 | TTL to USB | <img src="./pics/usb.jpg" width=30%  /> | [TTL to USB](https://m.tb.cn/h.gWzMxzBSkhSqkH3?tk=N1j3WEzIP9u) |
 | TTL to 485 | <img src="./pics/485.jpg" width=30%  /> | [TTL to 485](https://m.tb.cn/h.g3SEkso?tk=eER4WEzFYmP) |
 
 ## 4. License
-The source code is released under [GPLv2](http://www.gnu.org/licenses/) license. 
+The source code is released under [GPLv3](http://www.gnu.org/licenses/) license. 
 
 If you use any code of this repo in your academic research, it will be **very appreciated** if you can cite any of our following papers:
 
