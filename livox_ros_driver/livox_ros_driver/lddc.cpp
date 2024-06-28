@@ -444,7 +444,7 @@ uint32_t Lddc::PublishCustomPointcloud(LidarDataQueue *queue,
       if (timestamp_last_lidar_ > timestamp) {
         diff_t_lidar_ = timestamp_last_lidar_ - timestamp;
         if (diff_t_lidar_ > uint64_t((30000000000))) {
-          printf("WOC Lidar!!%f\n", (float)(diff_t_lidar_ / 1e9));
+          printf("The timestamp has jumped %f secs.\n", (float)(diff_t_lidar_ / 1e9));
 
           // float counter = (float)(((float)diff_t_lidar_) / (40 * 1e9));
           // printf("Lidar drop!!%f\n", counter);
@@ -454,7 +454,7 @@ uint32_t Lddc::PublishCustomPointcloud(LidarDataQueue *queue,
 
       if (diff_t_lidar_ > 39809238968) {
         cnt_lidar_ = ((int)((float)diff_t_lidar_ / 40000000000.0));
-        printf("Lidar drop!!%d\n", (int)cnt_lidar_);
+        printf("We have compensated %d scans.\n", (int)cnt_lidar_);
         timestamp = timestamp + (cnt_lidar_ + 1) * 40000000000;
       } else {
         timestamp = timestamp;

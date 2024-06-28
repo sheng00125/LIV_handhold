@@ -1,6 +1,7 @@
 # [LiDAR_Inertial_Visual_Handhold](https://zhuanlan.zhihu.com/p/670136001)
 
 ### News
+* **`28 June 2024`:** Update reproduction videos and some important notes.
 * **`27 May 2024`:** Fix a bug in the calculation of the synthetic GPRMC timestamp, which could cause timestamp rollback. Additionally, we add checksum verification for GPRMC.
 * **`20 May 2024`:** According to Livox Avia's pin requirements, we convert PPS TTL level to RS485 level and supplement it with more detailed electronic connection and material list.
 
@@ -13,8 +14,22 @@ This repository provides the **CAD files** (with suffix “\*.SLDPRT and \*.SLDA
 <img src="./pics/cover.jpg"  width="100.0%" />
 </div>
 
-## 2. Guide to installation
-### 2.1 Root directory
+## 2. Relevant guidance video 
+
+Thanks to the Bilibili uploader [GundaSmart](https://space.bilibili.com/687639149?spm_id_from=333.788.0.0) for making a detailed reproduction video. Everyone can follow the video to reproduce it. His sensor configuration includes a MID360 and a Hikvision pinhole camera.
+
+[FAST-LIVO Reproduction (Part 1)](https://www.bilibili.com/video/BV1T142197ci/?share_source=copy_web&vd_source=f77407286e8f0ee71b845d76498ada9d)
+
+[FAST-LIVO Reproduction (Part 2)](https://www.bilibili.com/video/BV14T421X7m9/?share_source=copy_web&vd_source=f77407286e8f0ee71b845d76498ada9d)
+
+[FAST-LIVO Reproduction (Part 3)](https://www.bilibili.com/video/BV16E42137ru/?share_source=copy_web&vd_source=f77407286e8f0ee71b845d76498ada9d)
+
+[FAST-LIVO Reproduction (Part 4)](https://www.bilibili.com/video/BV1Yb421i7xK/?share_source=copy_web&vd_source=f77407286e8f0ee71b845d76498ada9d)
+
+[FAST-LIVO Reproduction (Part 5)](https://www.bilibili.com/video/BV1Jz421b7px/?share_source=copy_web&vd_source=f77407286e8f0ee71b845d76498ada9d)
+
+## 3. Guide to installation
+### 3.1 Root directory
 
     ├── handhold_cad/ - CAD source files
     │   ├── ...
@@ -29,8 +44,9 @@ This repository provides the **CAD files** (with suffix “\*.SLDPRT and \*.SLDA
     │   ├── ...
     └── README.md - Project homepage document
     └── ...
+**Note: In the `livox_lidar_msg.launch` file, change the `path_for_time_stamp` to your own path.**
 
-### 2.2 Assembly instruction
+### 3.2 Assembly instruction
 
 The assembly instructions are demonstrated in the GIFs below. Each module is clearly labeled corresponding to the name of its STL file.
 
@@ -39,7 +55,7 @@ The assembly instructions are demonstrated in the GIFs below. Each module is cle
   <img src="./pics/2.gif" alt="2" width="48%">
 </p>
 
-### 2.3 Electronic connection
+### 3.3 Electronic connection
 The guide for the electronic connections is presented as follows:
 
 <table>
@@ -153,7 +169,7 @@ The guide for the electronic connections is presented as follows:
   </tr>
 </table>
 
-## 3. Main Material lists (only for reference)
+## 4. Main Material lists (only for reference)
 | Item  | Pics  | Purchasing list  |
 | :------------: | :------------: | :------------: |
 | Livox Avia LiDAR  | <img src="./pics/livox_avia.png" width=20%  /> | [Livox Avia](https://store.dji.com/hk-en/product/livox-avia) |
@@ -165,7 +181,7 @@ The guide for the electronic connections is presented as follows:
 | TTL to USB | <img src="./pics/usb.jpg" width=30%  /> | [TTL to USB](https://m.tb.cn/h.gWzMxzBSkhSqkH3?tk=N1j3WEzIP9u) |
 | TTL to 485 | <img src="./pics/485.jpg" width=30%  /> | [TTL to 485](https://m.tb.cn/h.g3SEkso?tk=eER4WEzFYmP) |
 
-## 4. License
+## 5. License
 The source code is released under [GPLv3](http://www.gnu.org/licenses/) license. 
 
 If you use any code of this repo in your academic research, it will be **very appreciated** if you can cite any of our following papers:
