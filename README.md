@@ -42,7 +42,6 @@ Thanks to the Bilibili uploader [GundaSmart](https://space.bilibili.com/68763914
     │   ├── ...
     └── README.md - Project homepage document
     └── ...
-**Note: In the `livox_lidar_msg.launch` and `left_camera_trigger.yaml` files, change the `path_for_time_stamp` to your own path.**
 
 ### 3.2 Assembly instruction
 
@@ -99,11 +98,6 @@ The guide for the electronic connections is presented as follows:
     <td>RS485_A</td>
   </tr>
 </table>
-
-**Note:**
-* **STM32 PB5 (PPS signal) is converted from TTL to RS-485, resulting in RS-485_A and RS-485_B;**
-* **STM32 TXD (GPRMC) is converted from TTL to USB and sent to the PC;** 
-* **If you are using the Mid360, you can directly connect STM32 PB5 to LiDAR M12 pps interface (Sync+).**
 
 <table>
   <tr>
@@ -162,6 +156,12 @@ The guide for the electronic connections is presented as follows:
   </tr>
 </table>
 
+**🔴🔥 IMPORTANT:**
+* **STM32 PB5 (PPS signal) is converted from TTL to RS-485, resulting in RS-485_A and RS-485_B;**
+* **STM32 TXD (GPRMC) is converted from TTL to USB and sent to the PC;** 
+* **If you are using the Mid360, you can directly connect STM32 PB5 to LiDAR M12 pps interface (Sync+).**
+* **In the `livox_lidar_msg.launch` and `left_camera_trigger.yaml` files, change the `path_for_time_stamp` to your own path.**
+  
 ## 4. Main Material lists (only for reference)
 | Item  | Pics  | Purchasing list  |
 | :------------: | :------------: | :------------: |
