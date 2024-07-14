@@ -8,8 +8,6 @@
 ## 1. Introduction
 This repository provides the **CAD files** (with suffix “\*.SLDPRT and \*.SLDASM”) for our handheld device, which can be opened and edited with [*Solidworks*](https://www.solidworks.com). All of the modules are suitable for printing with [*FDM (Fused Deposition Modeling)*](https://en.wikipedia.org/wiki/Fused_filament_fabrication). In addition, we have also open-sourced our **hardware synchronization scheme**, as well as the **STM32 source code** and **hardware wiring configuration** instructions.
 
-**Contributors**: [Sheng Hong](https://github.com/sheng00125) and [Chunran Zheng](https://github.com/xuankuzcr)
-
 <div align="center">
 <img src="./pics/cover.jpg"  width="100.0%" />
 </div>
@@ -44,7 +42,7 @@ Thanks to the Bilibili uploader [GundaSmart](https://space.bilibili.com/68763914
     │   ├── ...
     └── README.md - Project homepage document
     └── ...
-**Note: In the `livox_lidar_msg.launch` file, change the `path_for_time_stamp` to your own path.**
+**Note: In the `livox_lidar_msg.launch` and `left_camera_trigger.yaml` files, change the `path_for_time_stamp` to your own path.**
 
 ### 3.2 Assembly instruction
 
@@ -74,43 +72,38 @@ The guide for the electronic connections is presented as follows:
   </tr>
   <tr>
     <td>PIN 2</td>
-    <td>Power: -</td>
+    <td>Ground</td>
   </tr>
   <tr>
     <td>PIN 7</td>
-    <td>Ethernet: right PIN3</td>
+    <td>Ethernet: RX-</td>
   </tr>
   <tr>
     <td>PIN 6</td>
-    <td>Ethernet: left PIN3</td>
+    <td>Ethernet: RX+</td>
   </tr>
   <tr>
     <td>PIN 5</td>
-    <td>Ethernet: green PIN2</td>
+    <td>Ethernet: TX-</td>
   </tr>
   <tr>
     <td>PIN 4</td>
-    <td>Ethernet: green / white</td>
+    <td>Ethernet: TX+</td>
   </tr>
   <tr>
-    <td>PIN 11</td>
+    <td>PIN 11 (Sync-)</td>
     <td>RS485_B</td>
   </tr>
   <tr>
-    <td>PIN 12</td>
+    <td>PIN 12 (Sync+)</td>
     <td>RS485_A</td>
   </tr>
-  <!-- <tr>
-    <td>PIN 11</td>
-    <td>STM32 PWM- GND</td>
-  </tr>
-  <tr>
-    <td>PIN 12</td>
-    <td>STM32 PWM+ PB5</td>
-  </tr> -->
 </table>
 
-**Note: STM32 PB5 (PPS signal) is converted from TTL to RS-485, resulting in RS-485_A and RS-485_B. STM32 TXD (GPRMC) is converted from TTL to USB and sent to the PC. If you are using the Mid360, you can directly connect STM32 PB5 to PIN 12 of the LiDAR M12.** 
+**Note:**
+* **STM32 PB5 (PPS signal) is converted from TTL to RS-485, resulting in RS-485_A and RS-485_B;**
+* **STM32 TXD (GPRMC) is converted from TTL to USB and sent to the PC;** 
+* **If you are using the Mid360, you can directly connect STM32 PB5 to LiDAR M12 pps interface (Sync+).**
 
 <table>
   <tr>
