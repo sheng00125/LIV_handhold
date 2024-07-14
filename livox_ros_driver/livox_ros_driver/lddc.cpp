@@ -441,14 +441,10 @@ uint32_t Lddc::PublishCustomPointcloud(LidarDataQueue *queue,
       // timestamp_last
       // 如果出现回退，那就计算一下 回退时间
       // TODO CustomPointcloud
-      if (timestamp_last_lidar_ > timestamp) {
-        diff_t_lidar_ = timestamp_last_lidar_ - timestamp;
+      if (last_timestamp > timestamp) {
+        diff_t_lidar_ = last_timestamp - timestamp;
         if (diff_t_lidar_ > uint64_t((30000000000))) {
           printf("The timestamp has jumped %f secs.\n", (float)(diff_t_lidar_ / 1e9));
-
-          // float counter = (float)(((float)diff_t_lidar_) / (40 * 1e9));
-          // printf("Lidar drop!!%f\n", counter);
-          //
         }
       }
 
@@ -456,22 +452,17 @@ uint32_t Lddc::PublishCustomPointcloud(LidarDataQueue *queue,
         cnt_lidar_ = ((int)((float)diff_t_lidar_ / 40000000000.0));
         printf("We have compensated %d scans.\n", (int)cnt_lidar_);
         timestamp = timestamp + (cnt_lidar_ + 1) * 40000000000;
-      } else {
-        timestamp = timestamp;
-      }
+      } 
+
       pointt->low = timestamp;
-      //
-      // timestamp = timestamp + (counter + 1) * 40000000000;
+      
       /** convert to ros time stamp */
       cur_lidar_time = timestamp;
       cur_lidar_time_sec = timestamp / 1000000000.0;
-      time_offset_ = time_pc_ - cur_lidar_time_sec;
+      // time_offset_ = time_pc_ - cur_lidar_time_sec;
 
       livox_msg.header.stamp =
           ros::Time(timestamp / 1000000000.0); // + time_offset_);
-
-      // livox_msg.header.stamp = ros::Time(timestamp / 1000000000.0);
-      timestamp_last_lidar_ = timestamp;
     } else {
       packet_offset_time = (uint32_t)(timestamp - livox_msg.timebase);
     }
@@ -540,31 +531,8 @@ uint32_t Lddc::PublishImuData(LidarDataQueue *queue, uint32_t packet_num,
       reinterpret_cast<LivoxEthPacket *>(storage_packet.raw_data);
   timestamp = GetStoragePacketTimestamp(&storage_packet, data_source);
   if (timestamp >= 0) {
-
-    if (timestamp_last_imu_ > timestamp) {
-      diff_t_imu_ = timestamp_last_imu_ - timestamp;
-      if (diff_t_imu_ > uint64_t((30000000000))) {
-        printf("WOC IMU!!%f\n", (float)(diff_t_imu_ / 1e9));
-
-        // uint64_t counter = (uint64_t)(diff_t_imu_ / (40000000000));
-        // printf("IMU drop!!%ld\n", diff_t);
-        // timestamp = timestamp + (counter + 1) * 40000000000;
-      }
-    }
-
-    if (diff_t_imu_ > 39809238968) {
-      cnt_imu_ = ((int)((float)diff_t_imu_ / 40000000000.0));
-      // TODO  PublishImuData
-      // printf("IMU drop!!%llu\n", (int)cnt_imu_);
-      // printf("timestamp!!%llu\n", timestamp);
-      // timestamp = timestamp + (uint64_t)(cnt_imu_ + 1) *
-      // (uint64_t)(1000000000); printf("timestamp!!%llu\n", timestamp);
-      printf("IMU drop!!%d\n", (int)cnt_imu_);
-      timestamp = timestamp + (cnt_imu_ + 1) * 40000000000;
-    }
     imu_data.header.stamp =
         ros::Time(timestamp / 1000000000.0); // to ros time stamp
-    timestamp_last_imu_ = timestamp;
   }
 
   uint8_t point_buf[2048];
@@ -653,8 +621,7 @@ void Lddc::DistributeLidarData(void) {
     auto time_pc_clk = std::chrono::high_resolution_clock::now();
     time_pc_ = uint64_t(std::chrono::duration_cast<std::chrono::nanoseconds>(
                             time_pc_clk.time_since_epoch())
-                            .count()) /
-               1000000000.0;
+                            .count()) / 1000000000.0;
 
     PollingLidarPointCloudData(lidar_id, lidar);
     PollingLidarImuData(lidar_id, lidar);

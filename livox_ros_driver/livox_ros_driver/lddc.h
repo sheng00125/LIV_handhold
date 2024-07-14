@@ -63,7 +63,7 @@ public:
   void SetPublishFrq(uint32_t frq) { publish_frq_ = frq; }
 
   Lds *lds_;
-  double time_offset_;
+  // double time_offset_;
   double time_pc_;
 
 private:
@@ -105,8 +105,8 @@ private:
   ros::Publisher *private_imu_pub_[kMaxSourceLidar];
   ros::Publisher *global_imu_pub_;
 
-  uint64_t timestamp_last_lidar_ = 0;
-  volatile uint64_t timestamp_last_imu_ = 0;
+  // uint64_t timestamp_last_lidar_ = 0;
+  // volatile uint64_t timestamp_last_imu_ = 0;
   volatile uint64_t diff_t_lidar_;
   volatile uint64_t diff_t_imu_;
   volatile int cnt_lidar_;
