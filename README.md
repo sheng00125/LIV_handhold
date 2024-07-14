@@ -161,6 +161,7 @@ The guide for the electronic connections is presented as follows:
 * **STM32 TXD (GPRMC) is converted from TTL to USB and sent to the PC;** 
 * **If you are using the Mid360, you can directly connect STM32 PB5 to LiDAR M12 pps interface (Sync+).**
 * **In the `livox_lidar_msg.launch` and `left_camera_trigger.yaml` files, change the `path_for_time_stamp` to your own path.**
+* **Before you `roslaunch livox_ros_driver livox_lidar_msg.launch`, you can use `sudo chmod a+rw /dev/ttyUSB0` grant permissions to the USB serial port.**
   
 ## 4. Main Material lists (only for reference)
 | Item  | Pics  | Purchasing list  |

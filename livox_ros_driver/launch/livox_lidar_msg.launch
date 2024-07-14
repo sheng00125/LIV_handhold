@@ -1,5 +1,6 @@
 <launch>
 
+	<param name="path_for_time_stamp" type="string" value="/home/your_usr_name/timeshare"/>
 	<arg name="lvx_file_path" default="livox_test.lvx"/>
 	<arg name="bd_list" default="100000000000000"/>
 	<arg name="xfer_format" default="1"/>
@@ -19,9 +20,6 @@
 	<param name="data_src" value="$(arg data_src)"/>
 	<param name="publish_freq" type="double" value="$(arg publish_freq)"/>
 	<param name="output_data_type" value="$(arg output_type)"/>
-
-	<param name="path_for_time_stamp" type="string" value="/home/sheng/timeshare"/>
-
 	<param name="cmdline_str" type="string" value="$(arg bd_list)"/>
 	<param name="cmdline_file_path" type="string" value="$(arg lvx_file_path)"/>
 	<param name="user_config_path" type="string" value="$(find livox_ros_driver)/config/livox_lidar_config.json"/>

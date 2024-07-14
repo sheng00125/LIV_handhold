@@ -33,5 +33,5 @@ Gain: 15 # min: 0   max: 17.0166
 # GammaEnable: 1
 GammaSelector: 1 # 0 stands for user, 1 stands for sRGB, 2 
 Gamma: 0.7
-path_for_time_stamp: "/home/aa/timeshare"
+path_for_time_stamp: "/home/your_usr_name/timeshare"
 
