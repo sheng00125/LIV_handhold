@@ -1,6 +1,7 @@
 # [LiDAR_Inertial_Visual_Handhold](https://zhuanlan.zhihu.com/p/670136001)
 
 ### News
+* **`15 July 2024`:** Fix the bug related to LiDAR (IMU) timestamp compensation in the `livox_ros_driver`, remove the dynamic library dependency from `mvs_ros_driver`, and enable this synchronization scheme to use the official `livox_sdk`.
 * **`28 June 2024`:** Update reproduction videos and some important notes.
 * **`27 May 2024`:** Fix a bug in the calculation of the synthetic GPRMC timestamp, which could cause timestamp rollback. Additionally, we add checksum verification for GPRMC.
 * **`20 May 2024`:** According to Livox Avia's pin requirements, we convert PPS TTL level to RS485 level and supplement it with more detailed electronic connection and material list.
@@ -32,8 +33,6 @@ Thanks to the Bilibili uploader [GundaSmart](https://space.bilibili.com/68763914
     ├── handhold_cad/ - CAD source files
     │   ├── ...
     ├── livox_ros_driver/ - Livox LiDAR ROS driver
-    │   ├── ...
-    ├── livox_sdk/ - Livox LiDAR SDK
     │   ├── ...
     ├── mvs_ros_pkg/ - Camera driver
     │   ├── ...
@@ -162,8 +161,16 @@ The guide for the electronic connections is presented as follows:
 * **If you are using the Mid360, you can directly connect STM32 PB5 to LiDAR M12 pps interface (Sync+).**
 * **In the `livox_lidar_msg.launch` and `left_camera_trigger.yaml` files, change the `path_for_time_stamp` to your own path.**
 * **Before you `roslaunch livox_ros_driver livox_lidar_msg.launch`, you can use `sudo chmod a+rw /dev/ttyUSB0` grant permissions to the USB serial port.**
-  
-## 4. Main Material lists (only for reference)
+* **The default connection method in this repository directly connects to M12 without using the Livox converter. If you use the converter, you can connect STM32 PB5 (PPS signal) to the Livox converter Sync Port without converting TTL to 485 level. Refer to [Issue 19](https://github.com/sheng00125/LIV_handhold/issues/19) for details.**
+
+## 4. How to run the driver
+```bash
+roslaunch mvs_ros_pkg mvs_camera_trigger.launch
+roslaunch livox_ros_driver livox_lidar_msg.launch
+rosbag record /livox/lidar /livox/imu left_camera/image
+```
+
+## 5. Main material lists (only for reference)
 | Item  | Pics  | Purchasing list  |
 | :------------: | :------------: | :------------: |
 | Livox Avia LiDAR  | <img src="./pics/livox_avia.png" width=20%  /> | [Livox Avia](https://store.dji.com/hk-en/product/livox-avia) |
@@ -175,7 +182,7 @@ The guide for the electronic connections is presented as follows:
 | TTL to USB | <img src="./pics/usb.jpg" width=30%  /> | [TTL to USB](https://m.tb.cn/h.gWzMxzBSkhSqkH3?tk=N1j3WEzIP9u) |
 | TTL to 485 | <img src="./pics/485.jpg" width=30%  /> | [TTL to 485](https://m.tb.cn/h.g3SEkso?tk=eER4WEzFYmP) |
 
-## 5. License
+## 6. License
 The source code is released under [GPLv3](http://www.gnu.org/licenses/) license. 
 
 If you use any code of this repo in your academic research, it will be **very appreciated** if you can cite any of our following papers:
