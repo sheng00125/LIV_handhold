@@ -90,11 +90,11 @@ The guide for the electronic connections is presented as follows:
   </tr>
   <tr>
     <td>PIN 11 (Sync-)</td>
-    <td>RS485_B</td>
+    <td>RS485_Output B-</td>
   </tr>
   <tr>
     <td>PIN 12 (Sync+)</td>
-    <td>RS485_A</td>
+    <td>RS485_Output A+</td>
   </tr>
 </table>
 
@@ -154,13 +154,59 @@ The guide for the electronic connections is presented as follows:
     <td></td>
   </tr>
 </table>
+<table>
+  <tr>
+    <th>STM32</th>
+    <th>Peripheral Function</th>
+  </tr>
+  <tr>
+    <td>PA1</td>
+    <td>MVS camera PIN2 (OPTO_IN)</td>
+  </tr>
+  <tr>
+    <td>PB5</td>
+    <td>RS485_Input (TXD)</td>
+  </tr>
+  <tr>
+    <td>TXD</td>
+    <td>TTL2USB (RXD)</td>
+  </tr>
+  <tr>
+    <td>VCC</td>
+    <td>RS485_Input (VCC) | TTL2USB (VCC)</td>
+  </tr>
+  <tr>
+    <td>GND</td>
+    <td>RS485_Input (GND) | TTL2USB (GND) | MVS camera PIN5 (GND)</td>
+  </tr>
+</table>
+
+
+<table>
+  <tr>
+    <th>RS485</th>
+    <th>Peripheral Function</th>
+  </tr>
+  <tr>
+    <td>RS485_Output A+</td>
+    <td>LiDAR M12 PIN12 (Sync+)</td>
+  </tr>
+  <tr>
+    <td>RS485_Output B-</td>
+    <td>LiDAR M12 PIN11 (Sync-)</td>
+  </tr>
+  <tr>
+    <td>RS485_Output (GND)</td>
+    <td>LiDAR M12 PIN2 (GND)</td>
+  </tr>
+</table>
 
 **🔴🔥 IMPORTANT:**
-* **STM32 PB5 (PPS signal) is converted from TTL to RS-485, resulting in RS-485_A and RS-485_B;**
+* **STM32 PB5 (PPS signal) is converted from TTL to RS-485, resulting in RS485_Output A+ and RS485_Output B-;**
 * **STM32 TXD (GPRMC) is converted from TTL to USB and sent to the PC;** 
-* **If you are using the Mid360, you can directly connect STM32 PB5 to LiDAR M12 pps interface (Sync+).**
-* **In the `livox_lidar_msg.launch` and `left_camera_trigger.yaml` files, change the `path_for_time_stamp` to your own path.**
-* **Before you `roslaunch livox_ros_driver livox_lidar_msg.launch`, you can use `sudo chmod a+rw /dev/ttyUSB0` grant permissions to the USB serial port.**
+* **If you are using the Mid360, you can directly connect STM32 PB5 to LiDAR M12 pps interface;**
+* **In the `livox_lidar_msg.launch` and `left_camera_trigger.yaml` files, change the `path_for_time_stamp` to your own path;**
+* **Before you `roslaunch livox_ros_driver livox_lidar_msg.launch`, you can use `sudo chmod a+rw /dev/ttyUSB0` grant permissions to the USB serial port;**
 * **The default connection method in this repository directly connects to M12 without using the Livox converter. If you use the converter, you can connect STM32 PB5 (PPS signal) to the Livox converter Sync Port without converting TTL to 485 level. Refer to [Issue 19](https://github.com/sheng00125/LIV_handhold/issues/19) for details.**
 
 ## 4. How to run the driver
