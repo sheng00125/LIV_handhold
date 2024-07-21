@@ -34,7 +34,8 @@
 #include "lds_lidar.h"
 #include "lds_lvx.h"
 #include "livox_sdk.h"
-
+#include <sys/stat.h>
+#include <unistd.h>
 using namespace livox_ros;
 
 const int32_t kSdkVersionMajorLimit = 2;
@@ -85,7 +86,6 @@ int main(int argc, char **argv) {
   std::string frame_id = "livox_frame";
   bool lidar_bag = true;
   bool imu_bag   = false;
-  std::string path_for_time_stamp = "/home/aa/test4";
   livox_node.getParam("xfer_format", xfer_format);
   livox_node.getParam("multi_topic", multi_topic);
   livox_node.getParam("data_src", data_src);
@@ -94,7 +94,8 @@ int main(int argc, char **argv) {
   livox_node.getParam("frame_id", frame_id);
   livox_node.getParam("enable_lidar_bag", lidar_bag);
   livox_node.getParam("enable_imu_bag", imu_bag);
-  livox_node.getParam("path_for_time_stamp", path_for_time_stamp);
+  const char *user_name = getlogin();
+  std::string path_for_time_stamp = "/home/" + std::string(user_name) + "/timeshare";
   const char *shared_file_name = path_for_time_stamp.c_str();
   int fd = open(shared_file_name, O_CREAT | O_RDWR | O_TRUNC, 0666);
   if (fd == -1) {

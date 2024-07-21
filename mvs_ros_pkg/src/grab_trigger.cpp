@@ -12,6 +12,8 @@
 #include <fcntl.h>
 #include <sys/ipc.h>
 #include <sys/mman.h>
+#include <sys/stat.h>
+
 struct time_stamp {
   int64_t high;
   int64_t low;
@@ -292,12 +294,10 @@ int main(int argc, char **argv) {
   std::string expect_serial_number = Params["SerialNumber"];
   std::string pub_topic = Params["TopicName"];
   std::string camera_name = Params["CameraName"];
-  // std::string path_for_time_stamp = "/home/aa/test4";
-  // nh.getParam("path_for_time_stamp", path_for_time_stamp);
-  std::string path_for_time_stamp = Params["path_for_time_stamp"];
-  // path_for_time_stamp = Params["path_for_time_stamp"];
   CameraName = camera_name;
   pub = it.advertise(pub_topic, 1);
+  const char *user_name = getlogin();
+  std::string path_for_time_stamp = "/home/" + std::string(user_name) + "/timeshare";
   const char *shared_file_name = path_for_time_stamp.c_str();
 
   int fd = open(shared_file_name, O_RDWR);

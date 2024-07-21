@@ -205,7 +205,6 @@ The guide for the electronic connections is presented as follows:
 * **STM32 PB5 (PPS signal) is converted from TTL to RS-485, resulting in RS485_Output A+ and RS485_Output B-;**
 * **STM32 TXD (GPRMC) is converted from TTL to USB and sent to the PC;** 
 * **If you are using the Mid360, you can directly connect STM32 PB5 to LiDAR M12 pps interface;**
-* **In the `livox_lidar_msg.launch` and `left_camera_trigger.yaml` files, change the `path_for_time_stamp` to your own path;**
 * **Before you `roslaunch livox_ros_driver livox_lidar_msg.launch`, you can use `sudo chmod a+rw /dev/ttyUSB0` grant permissions to the USB serial port;**
 * **The default connection method in this repository directly connects to M12 without using the Livox converter. If you use the converter, you can connect STM32 PB5 (PPS signal) to the Livox converter Sync Port without converting TTL to 485 level. Refer to [Issue 19](https://github.com/sheng00125/LIV_handhold/issues/19) for details.**
 

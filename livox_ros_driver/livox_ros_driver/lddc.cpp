@@ -386,8 +386,6 @@ void Lddc::FillPointsToCustomMsg(livox_ros_driver::CustomMsg &livox_msg,
   }
 }
 
-uint64_t cur_lidar_time = -1;
-double cur_lidar_time_sec = -1;
 uint32_t Lddc::PublishCustomPointcloud(LidarDataQueue *queue,
                                        uint32_t packet_num, uint8_t handle) {
   static uint32_t msg_seq = 0;
@@ -437,32 +435,10 @@ uint32_t Lddc::PublishCustomPointcloud(LidarDataQueue *queue,
     if (!published_packet) {
       livox_msg.timebase = timestamp;
       packet_offset_time = 0;
+      pointt->low = timestamp;      
       /** convert to ros time stamp */
-      // timestamp_last
-      // 如果出现回退，那就计算一下 回退时间
-      // TODO CustomPointcloud
-      if (last_timestamp > timestamp) {
-        diff_t_lidar_ = last_timestamp - timestamp;
-        if (diff_t_lidar_ > uint64_t((30000000000))) {
-          printf("The timestamp has jumped %f secs.\n", (float)(diff_t_lidar_ / 1e9));
-        }
-      }
-
-      if (diff_t_lidar_ > 39809238968) {
-        cnt_lidar_ = ((int)((float)diff_t_lidar_ / 40000000000.0));
-        printf("We have compensated %d scans.\n", (int)cnt_lidar_);
-        timestamp = timestamp + (cnt_lidar_ + 1) * 40000000000;
-      } 
-
-      pointt->low = timestamp;
-      
-      /** convert to ros time stamp */
-      cur_lidar_time = timestamp;
-      cur_lidar_time_sec = timestamp / 1000000000.0;
-      // time_offset_ = time_pc_ - cur_lidar_time_sec;
-
       livox_msg.header.stamp =
-          ros::Time(timestamp / 1000000000.0); // + time_offset_);
+          ros::Time(timestamp / 1000000000.0);
     } else {
       packet_offset_time = (uint32_t)(timestamp - livox_msg.timebase);
     }
