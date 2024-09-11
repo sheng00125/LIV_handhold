@@ -168,7 +168,7 @@ The guide for the electronic connections is presented as follows:
     <td>RS485_Input (TXD)</td>
   </tr>
   <tr>
-    <td>TXD</td>
+    <td>PA9</td>
     <td>TTL2USB (RXD)</td>
   </tr>
   <tr>
