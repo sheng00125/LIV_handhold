@@ -20,4 +20,6 @@
     name="rviz"
     args="-d $(find mvs_ros_pkg)/rviz_cfg/mvs_camera.rviz"
   />
+      launch-prefix="gdb -ex run --args"
+
 </launch>
