@@ -174,7 +174,6 @@ static void *WorkThread(void *pUser) {
       {
         // 赋值共享内存中的时间戳给相机帧
         int64_t b = pointt->low;
-        // printf("pointt->low = %ld", pointt->low);
         double time_pc = b / 1000000000.0;
         rcv_time = ros::Time(time_pc);
       }
