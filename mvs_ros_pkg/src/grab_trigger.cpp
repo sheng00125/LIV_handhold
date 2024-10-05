@@ -53,11 +53,17 @@ void setParams(void *handle, const std::string &params_file) {
 
   // 设置曝光模式
   nRet = MV_CC_SetExposureAutoMode(handle, ExposureAutoMode);
+      std::string msg = "Set ExposureAutoMode: " + ExposureAutoStr[ExposureAutoMode];
+
   if (MV_OK == nRet) {
-    std::string msg = "Set ExposureAutoMode: " + ExposureAutoStr[ExposureAutoMode];
     ROS_INFO_STREAM(msg.c_str());
   } else {
-    ROS_ERROR_STREAM("Fail to set ExposureAutoMode");
+    if(ExposureAutoMode == 2) {
+      ROS_WARN_STREAM("Fail to set Exposure Auto Mode to Continues");
+    }
+    else {
+      ROS_INFO_STREAM(msg.c_str());
+    }
   }
 
   // 如果是自动曝光
@@ -66,7 +72,7 @@ void setParams(void *handle, const std::string &params_file) {
     if (MV_OK == nRet) {
       std::string msg =
           "Set Exposure Time Lower: " + std::to_string(ExposureTimeLower) +
-          "ms";
+          "us";
       ROS_INFO_STREAM(msg.c_str());
     } else {
       ROS_ERROR_STREAM("Fail to set Exposure Time Lower");
@@ -75,7 +81,7 @@ void setParams(void *handle, const std::string &params_file) {
     if (MV_OK == nRet) {
       std::string msg =
           "Set Exposure Time Upper: " + std::to_string(ExposureTimeUpper) +
-          "ms";
+          "us";
       ROS_INFO_STREAM(msg.c_str());
     } else {
       ROS_ERROR_STREAM("Fail to set Exposure Time Upper");
@@ -87,7 +93,7 @@ void setParams(void *handle, const std::string &params_file) {
     nRet = MV_CC_SetExposureTime(handle, ExposureTime);
     if (MV_OK == nRet) {
       std::string msg =
-          "Set Exposure Time: " + std::to_string(ExposureTime) + "ms";
+          "Set Exposure Time: " + std::to_string(ExposureTime) + "us";
       ROS_INFO_STREAM(msg.c_str());
     } else {
       ROS_ERROR_STREAM("Fail to set Exposure Time");
@@ -170,7 +176,7 @@ static void *WorkThread(void *pUser) {
     if (nRet == MV_OK) {
       
       ros::Time rcv_time;
-      if(trigger_enable)
+      if(trigger_enable && pointt != MAP_FAILED && pointt->low != 0)
       {
         // 赋值共享内存中的时间戳给相机帧
         int64_t b = pointt->low;
