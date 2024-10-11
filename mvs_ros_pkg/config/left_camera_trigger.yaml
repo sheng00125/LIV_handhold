@@ -21,3 +21,5 @@ Gain: 15 # min: 0   max: 17.0166
 Gamma: 0.7  # min: 0   max: 17.0166
 GammaSelector: 1 # 0 stands for user, 1 stands for sRGB
 # GammaEnable: 1
+
+PixelFormat: 0 # 0 stands for RGB8, 1 stands for BayerRG8, 2 stands for BayerRG12Packed

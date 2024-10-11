@@ -1,11 +1,12 @@
 # [LiDAR_Inertial_Visual_Handhold](https://zhuanlan.zhihu.com/p/670136001)
 
 ### News
+* **`11 October 2024`:** Add support for other pixel formats besides RGB8 (e.g., BayerRG8, BayerRG12Packed).
+* **`03 October 2024`:** Add ARM support, fix the camera driver startup and shutdown bug, remove the SerialNumber dependency, resolve the auto-exposure mode switching issue, and add a TriggerEnable interface to allow testing the camera without the PPS signal.
 * **`15 July 2024`:** Fix the bug related to LiDAR (IMU) timestamp compensation in the `livox_ros_driver`, remove the dynamic library dependency from `mvs_ros_driver`, and enable this synchronization scheme to use the official `livox_sdk`.
 * **`28 June 2024`:** Update reproduction videos and some important notes.
 * **`27 May 2024`:** Fix a bug in the calculation of the synthetic GPRMC timestamp, which could cause timestamp rollback. Additionally, we add checksum verification for GPRMC.
 * **`20 May 2024`:** According to Livox Avia's pin requirements, we convert PPS TTL level to RS485 level and supplement it with more detailed electronic connection and material list.
-* **`3 October 2024`:** Add ARM support, fix the camera driver startup and shutdown bug, remove the SerialNumber dependency, resolve the auto-exposure mode switching issue, and add a TriggerEnable interface to allow testing the camera without the PPS signal.
 
 ## 1. Introduction
 This repository provides the **CAD files** (with suffix “\*.SLDPRT and \*.SLDASM”) for our handheld device, which can be opened and edited with [*Solidworks*](https://www.solidworks.com). All of the modules are suitable for printing with [*FDM (Fused Deposition Modeling)*](https://en.wikipedia.org/wiki/Fused_filament_fabrication). In addition, we have also open-sourced our **hardware synchronization scheme**, as well as the **STM32 source code** and **hardware wiring configuration** instructions.

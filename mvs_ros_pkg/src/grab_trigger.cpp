@@ -22,10 +22,17 @@ struct time_stamp {
 };
 time_stamp *pointt;
 
-unsigned int g_nPayloadSize = 0;
+enum PixelFormat : unsigned int {
+  RGB8 = 0x02180014,
+  BayerRG8 = 0x01080009,
+  BayerRG12Packed = 0x010C002B
+};
+// unsigned int g_nPayloadSize = 0;
 bool is_undistorted = true;
 bool exit_flag = false;
+int width, height;
 image_transport::Publisher pub;
+std::vector<PixelFormat> PIXEL_FORMAT = { RGB8, BayerRG8, BayerRG12Packed};
 std::string ExposureAutoStr[3] = {"Off", "Once", "Continues"};
 std::string GammaSlectorStr[3] = {"User", "sRGB", "Off"};
 std::string GainAutoStr[3] = {"Off", "Once", "Continues"};
@@ -154,7 +161,6 @@ void SetupSignalHandler() {
 static void *WorkThread(void *pUser) {
   int nRet = MV_OK;
 
-  // ch:获取数据包大小 | en:Get payload size
   MVCC_INTVALUE stParam;
   memset(&stParam, 0, sizeof(MVCC_INTVALUE));
   nRet = MV_CC_GetIntValue(pUser, "PayloadSize", &stParam);
@@ -164,15 +170,20 @@ static void *WorkThread(void *pUser) {
   }
 
   MV_FRAME_OUT_INFO_EX stImageInfo = {0};
-  memset(&stImageInfo, 0, sizeof(MV_FRAME_OUT_INFO_EX));
-  unsigned char *pData = (unsigned char *)malloc(sizeof(unsigned char) * stParam.nCurValue);
-  if (NULL == pData) return NULL;
+  MV_CC_PIXEL_CONVERT_PARAM stConvertParam = {0};
+  unsigned char* pData = (unsigned char *)malloc(sizeof(unsigned char) * stParam.nCurValue);
+  unsigned char* pDataForBGR = (unsigned char*)malloc(sizeof(unsigned char) * stParam.nCurValue * 3);
 
-  unsigned int nDataSize = stParam.nCurValue;
+  if (pData == nullptr || pDataForBGR == nullptr) {
+    printf("Memory allocation failed!\n");
+    if (pData) free(pData);
+    if (pDataForBGR) free(pDataForBGR);
+    return nullptr;
+  }
 
   while (!exit_flag && ros::ok()) {
 
-    nRet = MV_CC_GetOneFrameTimeout(pUser, pData, nDataSize, &stImageInfo, 1000);
+    nRet = MV_CC_GetOneFrameTimeout(pUser, pData, stParam.nCurValue, &stImageInfo, 1000);
     if (nRet == MV_OK) {
       
       ros::Time rcv_time;
@@ -188,20 +199,36 @@ static void *WorkThread(void *pUser) {
         rcv_time = ros::Time::now();
       }
      
-      std::string debug_msg;
-      debug_msg = "GetOneFrame,nFrameNum[" +
-                  std::to_string(stImageInfo.nFrameNum) + "], FrameTime:" +
-                  std::to_string(rcv_time.toSec());
+      // std::string debug_msg;
+      // debug_msg = "GetOneFrame,nFrameNum[" +
+      //             std::to_string(stImageInfo.nFrameNum) + "], FrameTime:" +
+      //             std::to_string(rcv_time.toSec());
       // ROS_INFO_STREAM(debug_msg.c_str());
 
+      stConvertParam.nWidth = stImageInfo.nWidth;
+      stConvertParam.nHeight = stImageInfo.nHeight;
+      stConvertParam.pSrcData = pData;
+      stConvertParam.nSrcDataLen = stParam.nCurValue; 
+      stConvertParam.enSrcPixelType = stImageInfo.enPixelType;
+      stConvertParam.enDstPixelType = PixelType_Gvsp_RGB8_Packed;
+      stConvertParam.pDstBuffer = pDataForBGR;
+      stConvertParam.nDstBufferSize = stImageInfo.nWidth * stImageInfo.nHeight * 3;
+      nRet = MV_CC_ConvertPixelType(pUser, &stConvertParam);
+      if (MV_OK != nRet)
+      {
+        printf("MV_CC_ConvertPixelType failed! nRet [%x], skipping this frame\n", nRet);
+        continue;
+      }
       cv::Mat srcImage;
-      srcImage =
-          cv::Mat(stImageInfo.nHeight, stImageInfo.nWidth, CV_8UC3, pData);
-      cv::resize(srcImage, srcImage,
-                 cv::Size(srcImage.cols * image_scale,
-                          srcImage.rows * image_scale),
-                 CV_INTER_LINEAR);
+      srcImage = cv::Mat(stImageInfo.nHeight, stImageInfo.nWidth, CV_8UC3, pDataForBGR);
 
+      // cv::Mat srcImage;
+      // srcImage = cv::Mat(stImageInfo.nHeight, stImageInfo.nWidth, CV_8UC3, pData);
+      if (image_scale > 0.0) {
+        cv::resize(srcImage, srcImage, cv::Size(srcImage.cols * image_scale, srcImage.rows * image_scale), cv::INTER_LINEAR);
+      } else {
+        printf("Invalid image_scale: %f. Skipping resize.\n", image_scale);
+      }
       sensor_msgs::ImagePtr msg = cv_bridge::CvImage(std_msgs::Header(), "rgb8", srcImage).toImageMsg();
       msg->header.stamp = rcv_time;
       pub.publish(msg);
@@ -210,7 +237,13 @@ static void *WorkThread(void *pUser) {
 
   if (pData) {
     free(pData);
-    pData = NULL;
+    pData = nullptr;
+  }
+
+  if (pDataForBGR)
+  {
+    free(pDataForBGR);
+    pDataForBGR = nullptr;
   }
 
   return 0;
@@ -234,6 +267,8 @@ int main(int argc, char **argv) {
   trigger_enable = Params["TriggerEnable"];
   std::string expect_serial_number = Params["SerialNumber"];
   std::string pub_topic = Params["TopicName"];
+  int PixelFormat = Params["PixelFormat"];
+
   pub = it.advertise(pub_topic, 1);
   
   const char *user_name = getlogin();
@@ -295,16 +330,16 @@ int main(int argc, char **argv) {
     return -1;
   }
 
-  MVCC_INTVALUE stParam;
-  memset(&stParam, 0, sizeof(MVCC_INTVALUE));
-  nRet = MV_CC_GetIntValue(handle, "PayloadSize", &stParam);
-  if (MV_OK != nRet) {
-    printf("Get PayloadSize fail\n");
-    return -1;
-  }
-  g_nPayloadSize = stParam.nCurValue;
+  // MVCC_INTVALUE stParam;
+  // memset(&stParam, 0, sizeof(MVCC_INTVALUE));
+  // nRet = MV_CC_GetIntValue(handle, "PayloadSize", &stParam);
+  // if (MV_OK != nRet) {
+  //   printf("Get PayloadSize fail\n");
+  //   return -1;
+  // }
+  // g_nPayloadSize = stParam.nCurValue;
 
-  nRet = MV_CC_SetEnumValue(handle, "PixelFormat", 0x02180014);
+  nRet = MV_CC_SetEnumValue(handle, "PixelFormat", PIXEL_FORMAT[PixelFormat]); // BayerRG8 0x01080009 RGB8 0x02180014 BayerRG12Packed 0x010C002B
   if (nRet != MV_OK) {
     printf("Pixel setting can't work.");
     return -1;
