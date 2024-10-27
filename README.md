@@ -1,6 +1,7 @@
 # [LiDAR_Inertial_Visual_Handhold](https://zhuanlan.zhihu.com/p/670136001)
 
 ### News
+* **`27 October 2024`:** Add modified livox_ros_driver2 with time sync support for Mid360.
 * **`11 October 2024`:** Add support for other pixel formats besides RGB8 (e.g., BayerRG8, BayerRG12Packed).
 * **`03 October 2024`:** Add ARM support, fix the camera driver startup and shutdown bug, remove the SerialNumber dependency, resolve the auto-exposure mode switching issue, and add a TriggerEnable interface to allow testing the camera without the PPS signal.
 * **`15 July 2024`:** Fix the bug related to LiDAR (IMU) timestamp compensation in the `livox_ros_driver`, remove the dynamic library dependency from `mvs_ros_driver`, and enable this synchronization scheme to use the official `livox_sdk`.
