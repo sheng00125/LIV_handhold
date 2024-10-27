@@ -25,14 +25,15 @@ time_stamp *pointt;
 enum PixelFormat : unsigned int {
   RGB8 = 0x02180014,
   BayerRG8 = 0x01080009,
-  BayerRG12Packed = 0x010C002B
+  BayerRG12Packed = 0x010C002B,
+  BayerGB12Packed = 0x010C002C
 };
 // unsigned int g_nPayloadSize = 0;
 bool is_undistorted = true;
 bool exit_flag = false;
 int width, height;
 image_transport::Publisher pub;
-std::vector<PixelFormat> PIXEL_FORMAT = { RGB8, BayerRG8, BayerRG12Packed};
+std::vector<PixelFormat> PIXEL_FORMAT = { RGB8, BayerRG8, BayerRG12Packed, BayerGB12Packed};
 std::string ExposureAutoStr[3] = {"Off", "Once", "Continues"};
 std::string GammaSlectorStr[3] = {"User", "sRGB", "Off"};
 std::string GainAutoStr[3] = {"Off", "Once", "Continues"};
