@@ -144,8 +144,8 @@ void TimeSync::PollDataLoop() {
             if (((fn_cb_ != nullptr) || (client_data_ != nullptr))) {
               if ((strstr((const char *)packet.data, "$GPRMC")) ||
                       (strstr((const char *)packet.data , "$GNRMC"))){
-                        // 这里把包的结果打印出来了
-                // printf((const char *)packet.data);
+                // 这里把包的结果打印出来了
+                printf("Received RMC data packet: %s\n", (const char *)packet.data);
                 fn_cb_((const char *)packet.data,
                        packet.data_len, client_data_);
                 // printf((const char *)client_data_);
