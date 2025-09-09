@@ -211,6 +211,7 @@ uint32_t Lddc::PublishPointcloud2(LidarDataQueue *queue, uint32_t packet_num,
     }
     /** Use the first packet timestamp as pointcloud2 msg timestamp */
     if (!published_packet) {
+      pointt->low = timestamp; // add timesync for xfer_format=0
       cloud.header.stamp = ros::Time(timestamp / 1000000000.0);
     }
     uint32_t single_point_num = storage_packet.point_num * echo_num;
