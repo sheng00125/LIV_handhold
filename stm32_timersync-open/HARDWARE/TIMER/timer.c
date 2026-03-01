@@ -51,7 +51,7 @@ vu16 shorttt=0;
 
 char gprmcStr[7]="$GPRMC,";
 int chckNum=0;
-char chckNumChar[2];
+char chckNumChar[3];
 
 int ss=0;
 int mm=0;
